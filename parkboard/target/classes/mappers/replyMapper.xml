@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.parkboard.board.mappers.replyMapper">
+
+	<!-- 댓글 불러오기 -->
+	<select id="getReplyList" resultType="com.parkboard.board.dto.ReplyDto">
+		
+		SELECT
+			REPLY_NUM
+		   ,BOARD_NUM
+		   ,REPLY_CONTENT
+		   ,REPLY_WRITTER
+		   ,REPLY_DATE
+		   ,REPLY_EDIT
+		   ,REPLY_MAIL
+		FROM
+			REPLY
+		WHERE
+			BOARD_NUM = #{board_num}
+		ORDER BY REPLY_DATE desc
+		
+	</select>
+	
+	<!-- 댓글 저장하기 -->
+	<insert id="insertReply" parameterType="com.parkboard.board.dto.ReplyDto">
+		
+			INSERT
+				INTO REPLY
+			(
+				BOARD_NUM
+			   ,REPLY_CONTENT
+			   ,REPLY_WRITTER
+			   ,REPLY_DATE
+			   ,REPLY_EDIT
+			   ,REPLY_MAIL
+			)
+			VALUES
+			(
+				#{board_num}
+			   ,#{reply_content}
+			   ,#{reply_writter}
+			   ,now()
+			   ,now()
+			   ,#{reply_mail}
+			)
+			
+	</insert>
+	
+	<update id="updateReply" parameterType="com.parkboard.board.dto.ReplyDto">
+		
+		UPDATE 
+			REPLY
+		SET
+			REPLY_CONTENT = #{reply_content}
+		   ,REPLY_EDIT = now()
+		WHERE
+			REPLY_NUM = #{reply_num}
+			
+	</update>
+	
+	<delete id="deleteReply" parameterType="int">
+		
+		DELETE
+			FROM REPLY
+		WHERE
+			REPLY_NUM = #{reply_num}
+			
+	</delete>
+</mapper>

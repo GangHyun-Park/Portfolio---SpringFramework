@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.parkboard.board.mappers.boardMapper">
+	
+	<!-- 게시글 목록 가져오기 -->
+	<select id="getBoardList" resultType="com.parkboard.board.dto.BoardDto">
+		
+		SELECT
+			BOARD_NUM
+		   ,BOARD_CATE
+		   ,BOARD_TITLE
+		   ,BOARD_CONTENT
+		   ,BOARD_TAG
+		   ,BOARD_CNT
+		   ,BOARD_WRITTER
+		   ,BOARD_DATE
+		   ,BOARD_EDIT
+		FROM
+			BOARD
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchType=='board_title' and keyword != null and keyword != '' ">
+				AND BOARD_TITLE like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='board_content' and keyword != null and keyword != '' ">
+				AND BOARD_CONTENT like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType=='board_writter' and keyword != null and keyword != '' ">
+				AND BOARD_WRITTER like CONCAT('%', #{keyword}, '%')
+			</if>	
+		</trim>
+		ORDER BY BOARD_NUM DESC
+		LIMIT #{startList}, #{listSize}
+		
+	</select>
+	
+	<!-- 게시글 상세보기 -->
+	<select id="getBoardDetail" resultType="com.parkboard.board.dto.BoardDto" parameterType = "com.parkboard.board.dto.BoardDto">
+	
+		SELECT
+			BOARD_NUM
+		   ,BOARD_CATE
+		   ,BOARD_TITLE
+		   ,BOARD_CONTENT
+		   ,BOARD_TAG
+		   ,BOARD_CNT
+		   ,BOARD_WRITTER
+		   ,BOARD_DATE
+		   ,BOARD_EDIT
+		FROM
+			BOARD
+		WHERE
+			BOARD_NUM = #{board_num}
+			
+	</select>
+	
+	<!-- 게시글 입력 -->
+	<insert id="insertBoard" parameterType="com.parkboard.board.dto.BoardDto" useGeneratedKeys="true" keyProperty="board_num">
+	
+		INSERT
+			INTO BOARD
+		(
+			BOARD_CATE
+		   ,BOARD_TITLE
+		   ,BOARD_CONTENT
+		   ,BOARD_TAG
+		   ,BOARD_CNT
+		   ,BOARD_WRITTER
+		   ,BOARD_DATE
+		   ,BOARD_EDIT
+		)
+		VALUES
+		(
+			#{board_cate}
+		   ,#{board_title}
+		   ,#{board_content}
+		   ,#{board_tag}
+		   ,0
+		   ,#{board_writter}
+		   ,now()
+		   ,now()
+		)
+			
+	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateBoard" parameterType="com.parkboard.board.dto.BoardDto">
+	
+		UPDATE 
+			BOARD 
+		SET
+			BOARD_CATE = #{board_cate}
+		   ,BOARD_TITLE = #{board_title}
+		   ,BOARD_CONTENT = #{board_content}
+		   ,BOARD_TAG = #{board_tag}
+		   ,BOARD_EDIT = now()
+		WHERE
+			BOARD_NUM = #{board_num}
+			
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="deleteBoard" parameterType="int">
+	
+		DELETE
+			FROM BOARD
+		WHERE
+			BOARD_NUM = #{board_num}
+			 
+	</delete>
+	
+	<!-- 게시글 조회수 -->
+	<update id="updateBoardCnt" parameterType="com.parkboard.board.dto.BoardDto">
+	
+		UPDATE 
+			BOARD
+		SET
+			BOARD_CNT = BOARD_CNT + 1
+		WHERE
+			BOARD_NUM = #{board_num}
+			
+	</update>
+	
+	<!-- 게시글 페이징 처리 중 게시글 개수 읽어오기 -->
+	
+	<select id="getBoardListCnt" resultType="int">
+		
+		SELECT
+			count(*) as listCnt
+		FROM
+			BOARD
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="keyword != null and keyword != '' ">
+				<if test="searchType=='board_title'">
+					AND BOARD_TITLE like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='board_content'">
+					AND BOARD_CONTENT like CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='board_writter'">
+					AND BOARD_WRITTER like CONCAT('%', #{keyword}, '%')
+				</if>
+     	 	</if>
+		</trim>
+	</select>
+	
+</mapper>

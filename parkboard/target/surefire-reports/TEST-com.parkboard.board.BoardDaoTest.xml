@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="6" failures="0" name="com.parkboard.board.BoardDaoTest" time="2.208" errors="0" skipped="5">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="java.vm.version" value="14.0.2+12-46"/>
+    <property name="sun.boot.library.path" value="C:\dev\jdk-14.0.2\bin"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\dev\workspace\parkboard"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="KR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\dev\workspace\parkboard"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="java.runtime.version" value="14.0.2+12-46"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\gangh\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="classworlds.conf" value="C:\dev\workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf17689814667005628717.tmp"/>
+    <property name="sun.jnu.encoding" value="MS949"/>
+    <property name="java.library.path" value="C:\dev\jdk-14.0.2\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Users\gangh\Downloads\WINDOWS.X64_193000_db_home\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Java\jdk-14.0.2\bin;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\gangh\AppData\Local\Microsoft\WindowsApps;C:\Users\gangh\AppData\Local\GitHubDesktop\bin;."/>
+    <property name="jdk.debug" value="release"/>
+    <property name="java.class.version" value="58.0"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.0"/>
+    <property name="user.home" value="C:\Users\gangh"/>
+    <property name="user.timezone" value="Asia/Seoul"/>
+    <property name="file.encoding" value="MS949"/>
+    <property name="java.specification.version" value="14"/>
+    <property name="user.name" value="gangh"/>
+    <property name="java.class.path" value="C:\Users\gangh\.p2\pool\plugins\org.eclipse.m2e.maven.runtime_1.16.0.20200610-1735\jars\plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="14"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B -s C:\dev\apache-maven-3.6.3\conf\settings.xml install"/>
+    <property name="java.home" value="C:\dev\jdk-14.0.2"/>
+    <property name="user.language" value="ko"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="14.0.2"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="C:\dev\workspace\parkboard\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.version.date" value="2020-07-14"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase classname="com.parkboard.board.BoardDaoTest" name="testGetBoardContent" time="0.373">
+    <skipped/>
+    <system-out>INFO : org.springframework.test.context.support.DefaultTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+INFO : org.springframework.test.context.support.DefaultTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@6b26e945, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@63a65a25, org.springframework.test.context.support.DependencyInjectionTestExecutionListener@54c562f7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@318ba8c8, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6dbb137d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3c9d0b9d]
+</system-out>
+  </testcase>
+  <testcase classname="com.parkboard.board.BoardDaoTest" name="testUpdateBoard" time="0.374">
+    <skipped/>
+  </testcase>
+  <testcase classname="com.parkboard.board.BoardDaoTest" name="testInsertBoard" time="0.374">
+    <skipped/>
+  </testcase>
+  <testcase classname="com.parkboard.board.BoardDaoTest" name="testGetBoardList" time="0.374">
+    <skipped/>
+  </testcase>
+  <testcase classname="com.parkboard.board.BoardDaoTest" name="tesDeleteBoard" time="0.374">
+    <skipped/>
+  </testcase>
+  <testcase classname="com.parkboard.board.BoardDaoTest" name="testUpdateViewCnt" time="0.339"/>
+</testsuite>
