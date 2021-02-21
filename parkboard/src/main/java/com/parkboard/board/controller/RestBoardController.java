@@ -23,11 +23,13 @@ public class RestBoardController {
 	private BoardService boardService;
 	
 	
+	//´ñ±Û ¸ñ·Ï
 	@RequestMapping(value = "/getReplyList", method = RequestMethod.POST)
 	public List<ReplyDto> getReplyList(@RequestParam("board_num")int board_num) throws Exception{
 		return boardService.getReplyList(board_num);
 	}
 	
+	//´ñ±Û ÀÔ·Â
 	@RequestMapping(value = "/insertReply", method = RequestMethod.POST)
 	public Map<String, Object> insertReply(@RequestBody ReplyDto replyDto) throws Exception{
 		
@@ -43,6 +45,7 @@ public class RestBoardController {
 		return result;
 	}
 	
+	//´ñ±Û ¼öÁ¤
 	@RequestMapping(value = "/updateReply", method = RequestMethod.POST)
 	public Map<String, Object> updateReply(@RequestBody ReplyDto replyDto) throws Exception{
 		
@@ -58,6 +61,7 @@ public class RestBoardController {
 		return result;
 	}
 	
+	//´ñ±Û »èÁ¦
 	@RequestMapping(value = "deleteReply", method=RequestMethod.POST)
 	public Map<String, Object> deleteReply(@RequestParam("reply_num")int reply_num) throws Exception{
 		

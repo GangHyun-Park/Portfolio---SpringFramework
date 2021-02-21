@@ -20,7 +20,6 @@ import com.google.gson.JsonParser;
 
 public class GoogleController {
 	private final static String Google_CLIENT_ID = "1006017538645-bu6sf380q78em1vtb3th07tugs5sjeh7.apps.googleusercontent.com"; 
-	
 	private final static String Google_REDIRECT_URI = "http://localhost:8080/login/googleLogin"; 
 	public static String getAuthorizationUrl(HttpSession session) {
 		
@@ -41,9 +40,9 @@ public class GoogleController {
 		try { 
 			URL url = new URL(reqURL); 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection(); 
-			//POST 요청을 위해 기본값이 false인 setDoOutput을 true로 
+
 			conn.setRequestMethod("POST"); 
-			conn.setDoOutput(true); //POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송 
+			conn.setDoOutput(true); 
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream())); 
 			StringBuilder sb = new StringBuilder(); 
 			sb.append("grant_type=authorization_code"); 
@@ -53,15 +52,16 @@ public class GoogleController {
 			sb.append("&code="+authorize_code); 
 			sb.append("&state=url_parameter"); 
 			bw.write(sb.toString()); 
-			bw.flush(); //결과 코드가 200이라면 성공
+			bw.flush();
 			int responseCode = conn.getResponseCode(); 
-			if(responseCode==200){ //요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기 
+			
+			if(responseCode==200){ 
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream())); 
 				String line = ""; 
 				String result = ""; 
 				while ((line = br.readLine()) != null) { 
 					result += line; 
-				} //Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성 
+				}
 				JsonParser parser = new JsonParser(); 
 				JsonElement element = parser.parse(result); 
 				System.out.println("result : "+result); 
@@ -90,7 +90,7 @@ public class GoogleController {
             while ((line = br.readLine()) != null) {
                 result = result.concat(line);
             }            
-            // JSON parser 만들어 문자열 데이터를 객체화한다.
+
             JSONParser parser = new JSONParser();
             JSONObject obj = (JSONObject)parser.parse(result);
             name = (String)obj.get("name");

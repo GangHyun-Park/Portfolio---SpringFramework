@@ -30,7 +30,6 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public BoardDto getBoardDetail(int board_num) throws Exception {
 		BoardDto boardDto = new BoardDto();
-		//boardDao.updateBoardCnt(board_num);
 		boardDto = boardDao.getBoardDetail(board_num);
 				
 		return boardDto;

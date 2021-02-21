@@ -38,16 +38,16 @@ public class KakaoController {
 		final String RequestUrl = "https://kauth.kakao.com/oauth/token"; 
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>(); 
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
-		postParams.add(new BasicNameValuePair("client_id", "1a3b4b73e38826274040016151e7d749")); // REST API KEY 
-		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/login/kakaoLogin")); // 리다이렉트 URI 
-		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값 final
+		postParams.add(new BasicNameValuePair("client_id", "1a3b4b73e38826274040016151e7d749")); 
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8080/login/kakaoLogin")); 
+		postParams.add(new BasicNameValuePair("code", autorize_code));
 		HttpClient client = HttpClientBuilder.create().build(); 
 		final HttpPost post = new HttpPost(RequestUrl); 
 		
 		JsonNode returnNode = null; 
 		try { 
 			post.setEntity(new UrlEncodedFormEntity(postParams)); 
-			final HttpResponse response = client.execute(post); // JSON 형태 반환값 처리
+			final HttpResponse response = client.execute(post); 
 			ObjectMapper mapper = new ObjectMapper(); 
 			returnNode = mapper.readTree(response.getEntity().getContent()); 
 		} catch (UnsupportedEncodingException e) { 
@@ -56,9 +56,7 @@ public class KakaoController {
 			e.printStackTrace(); 
 		} catch (IOException e) { 
 			e.printStackTrace(); 
-		} finally { 
-			// clear resources 
-		} 
+		} finally {} 
 		return returnNode; 
 	} 
 	
@@ -66,21 +64,19 @@ public class KakaoController {
 		
 		final String RequestUrl = "https://kapi.kakao.com/v2/user/me"; 
 		final HttpClient client = HttpClientBuilder.create().build(); 
-		final HttpPost post = new HttpPost(RequestUrl); // add header 
+		final HttpPost post = new HttpPost(RequestUrl);
 		post.addHeader("Authorization", "Bearer " + accessToken); 
 		JsonNode returnNode = null; 
 		
 		try { 
-			final HttpResponse response = client.execute(post); // JSON 형태 반환값 처리
+			final HttpResponse response = client.execute(post); 
 			ObjectMapper mapper = new ObjectMapper(); 
 			returnNode = mapper.readTree(response.getEntity().getContent()); 
 		} catch (ClientProtocolException e) { 
 			e.printStackTrace(); 
 		} catch (IOException e) { 
 			e.printStackTrace(); 
-		} finally { 
-			// clear resources 
-		} 
+		} finally {} 
 	return returnNode;
 	}
 }
