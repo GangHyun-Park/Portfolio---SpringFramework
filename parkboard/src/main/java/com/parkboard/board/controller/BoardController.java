@@ -43,10 +43,12 @@ public class BoardController {
 			@ModelAttribute("search")Search search) 
 			throws Exception{
 		
+		//검색어 기능
 		model.addAttribute("search", search);
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 		
+		//검색 후 페이징 처리
 		int listCnt = boardService.getBoardListCnt(search);
 		
 		search.pageInfo(page, range, listCnt);
@@ -61,6 +63,7 @@ public class BoardController {
 	@RequestMapping("/boardWrite")
 	public String boardWrite(@ModelAttribute("boardDto")BoardDto boardDto,HttpSession session) {
 		
+		//세션에 아이디가 없을 시 에러페이지 이동
 		Object check = session.getAttribute("sessionId");
 		
 		if(check == null)
@@ -77,7 +80,7 @@ public class BoardController {
 			@RequestParam("mode")String mode, RedirectAttributes rttr)
 	throws Exception{
 
-		
+		//저장 or 수정을 받아와서 다른 service로 이동
 		if(mode.equals("update")) {
 			System.out.println("update 실행");
 			boardService.updateBoard(boardDto);
@@ -94,6 +97,7 @@ public class BoardController {
 	@RequestMapping(value = "/getBoardDetail", method = {RequestMethod.GET,RequestMethod.POST})
 	public String getBoardDetail(HttpServletResponse response ,HttpServletRequest request ,BoardDto boardDto, Model model, @RequestParam("board_num")int board_num) throws Exception{
 		
+		//게시글과 댓글목록 
 		model.addAttribute("boardDetail",boardService.getBoardDetail(board_num));
 		model.addAttribute("replyDto",new ReplyDto());
 		

@@ -41,7 +41,8 @@ public class LoginController {
 	// 로그인
 	@RequestMapping(value="/loginForm", method = {RequestMethod.GET, RequestMethod.POST })
 	public String loginForm(Model model,HttpSession session) throws Exception{
-				
+			
+			//login페이지에서 각 소셜로그인을 누를 시 로그인 url을 String값에 담아서 return 시켜준다
 			String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 			String kakaoUrl = KakaoController.getAuthorizationUrl(session);
 			String googleUrl = GoogleController.getAuthorizationUrl(session);
@@ -52,18 +53,18 @@ public class LoginController {
 			
 			return "login/loginForm";
 	}
+	
 	//네이버 로그인 콜백
 	@RequestMapping(value = "/callback", method = { RequestMethod.GET, RequestMethod.POST })
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
 	throws IOException, ParseException{
 		
-		OAuth2AccessToken oauthToken;
+		OAuth2AccessToken oauthToken; //토큰을 발을 객체 생성
 
-		oauthToken = naverLoginBO.getAccessToken(session, code, state);
+		oauthToken = naverLoginBO.getAccessToken(session, code, state); //naverLoginBO로 session,code,state 값을 전달하며 토큰을 요청한다.
+		apiResult = naverLoginBO.getUserProfile(oauthToken); // 로그인한 계정의 정보를 요청한다. 이때 토큰값을 넘겨준다.
 		
-		apiResult = naverLoginBO.getUserProfile(oauthToken);
-		
-		JSONParser parser = new JSONParser();
+		JSONParser parser = new JSONParser(); // 로그인 정보는 json형태로 되어있기 때문에 파싱해준다.
 		Object obj = parser.parse(apiResult);
 		JSONObject jsonObj = (JSONObject) obj;
 		
@@ -81,6 +82,7 @@ public class LoginController {
 	@RequestMapping(value = "/kakaoLogin", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView kakaoLogin(@RequestParam("code") String code, HttpServletRequest request,
 			HttpServletResponse response, HttpSession session) throws Exception {
+		
 		ModelAndView mav = new ModelAndView();
 		JsonNode node = KakaoController.getAccessToken(code);
 		JsonNode accessToken = node.get("access_token");
@@ -126,6 +128,7 @@ public class LoginController {
 	@RequestMapping(value="/logoutForm", method = {RequestMethod.GET, RequestMethod.POST })
 	public String logoutForm(Model model,HttpSession session) throws Exception{
 		
+			//세션과 apiresult값을 초기화 시킨다
 			session.invalidate();
 			apiResult = null;
 			return "etc/skill";

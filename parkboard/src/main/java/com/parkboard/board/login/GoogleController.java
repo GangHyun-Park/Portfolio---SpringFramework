@@ -20,7 +20,9 @@ import com.google.gson.JsonParser;
 
 public class GoogleController {
 	private final static String Google_CLIENT_ID = "1006017538645-bu6sf380q78em1vtb3th07tugs5sjeh7.apps.googleusercontent.com"; 
-	private final static String Google_REDIRECT_URI = "http://localhost:8080/login/googleLogin"; 
+	private final static String Google_REDIRECT_URI = "http://localhost:8080/login/googleLogin";
+	
+	//네이버 로그인과 같이 같은 방법으로 method 구성
 	public static String getAuthorizationUrl(HttpSession session) {
 		
 		String googleUrl = "https://accounts.google.com/o/oauth2/v2/auth?" 
