@@ -17,12 +17,20 @@ SpringFramework + oauth 2.0을 이용한 게시판
 * Server  
 1. Java  
 2. Spring MVC
-3. JSP / JSTL  
-4. Oauth 2.0
-5. Ajax
-6. RESTful  
-7. Apache tomcat  
-8. MySQL / mybatis  
+3. Oauth 2.0
+4. JSTL  
+5. JSP
+6. Ajax
+7. RESTful  
+8. Apache tomcat  
+9. MySQL
+10. mybatis  
+* others
+1. Maven  
+2. Json
+3. junit
+4. SVN
+5. Git / Github
 
 >주요 기능  
 
