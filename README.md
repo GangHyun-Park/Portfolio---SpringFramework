@@ -72,4 +72,4 @@ SpringFramework + oauth 2.0을 이용한 게시판
 
 > 도메인  
 
-[Parkboard](dtg6184.cafe24.com)
+[Parkboard](http://dtg6184.cafe24.com)
