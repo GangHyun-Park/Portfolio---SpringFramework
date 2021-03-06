@@ -73,3 +73,7 @@ SpringFramework + oauth 2.0을 이용한 게시판
 > 도메인  
 
 [Parkboard](http://dtg6184.cafe24.com)
+
+> 버그  
+
+- 페이징 처리가 수월하지 않음. 1000개이하일 경우에 작동. 단시간 내로 수정
