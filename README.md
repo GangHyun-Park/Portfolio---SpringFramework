@@ -74,6 +74,7 @@ SpringFramework + oauth 2.0을 이용한 게시판
 
 [Parkboard](http://dtg6184.cafe24.com)
 
-> 버그  
+> 공지 / 수정
 
 - 3월 6일 수정완료(페이징처리)
+- 3월 8일 네이버 검수 실패로 인해 'ejsvk6184' 테스트 계정으로만 네이버 로그인 가능
