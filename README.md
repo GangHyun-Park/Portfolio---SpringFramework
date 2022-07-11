@@ -1,6 +1,5 @@
 # Portfolio---SpringFramework  
 SpringFramework + oauth 2.0을 이용한 게시판  
-- [Parkboard](http://dtg6184.cafe24.com)
 ---
 >개요  
 
@@ -70,9 +69,6 @@ SpringFramework + oauth 2.0을 이용한 게시판
 * RESTful에 대한 이해
 * session과 cookie를 활용하여 정보의 저장을 이해  
 
-> 도메인  
-
-[Parkboard](http://dtg6184.cafe24.com)
 
 > 공지 / 수정
 
